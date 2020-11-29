@@ -44,7 +44,7 @@ def form_edit_get(hw_id):
 def form_update_post(hw_id):
     cursor = mysql.get_db().cursor()
     inputdata = (request.form.get('Index'), request.form.get('Height'), request.form.get('Weight'), hw_id)
-    sql_update_query = """UPDATE hw_200 t SET t.Index = %s, t.Height = %s, t.Weight = %s WHERE t.id = %s """
+    sql_update_query = """UPDATE hw_200 t SET t.`Index` = %s, t.Height = %s, t.Weight = %s WHERE t.id = %s """
     cursor.execute(sql_update_query, inputdata)
     mysql.get_db().commit()
     return redirect("/", code=302)
@@ -100,7 +100,7 @@ def api_add() -> str:
     cursor = mysql.get_db().cursor()
     content = request.json
     inputdata = (content['Index'], content['Height'], content['Weight'])
-    sql_insert_query = """INSERT INTO hw_200 (Index,Height,Weight) 
+    sql_insert_query = """INSERT INTO hw_200 (`Index`,Height,Weight) 
                  VALUES (%s, %s, %s) """
     cursor.execute(sql_insert_query, inputdata)
     mysql.get_db().commit()
@@ -109,11 +109,11 @@ def api_add() -> str:
 
 
 @app.route('/api/v1/hw/<int:hw_id>', methods=['PUT'])
-def api_edit(home_id) -> str:
+def api_edit(hw_id) -> str:
     cursor = mysql.get_db().cursor()
     content = request.json
     inputdata = (content['Index'], content['Height'], content['Weight'] , hw_id)
-    sql_update_query = """UPDATE hw_200 t SET t.Index = %s, t.Height = %s, t.Weight = %s WHERE t.id = %s """
+    sql_update_query = """UPDATE hw_200 t SET t.`Index` = %s, t.Height = %s, t.Weight = %s WHERE t.id = %s """
     cursor.execute(sql_update_query, inputdata)
     mysql.get_db().commit()
     resp = Response(status=200, mimetype='application/json')
