@@ -11,7 +11,7 @@ This project is a homework assignment to get Pycharm working with Docker, Flask,
 ![webapp_running](./screenshots/webapp_view.png)
 
 # Edit
-![webapp_edit](./screenshots/webapp_edit.png)
+![webapp_edit](./screenshots/webapp_edit.png) 
 
 # Delete (Index 1 deleted)
 
