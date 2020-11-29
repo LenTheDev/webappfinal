@@ -1,22 +1,24 @@
+  
 {% extends "layout.html" %}
 {% block content %}
 
-<div class="card" class="m-5 p-2">
-    <h5 class="card-title">{{ city.fldName }} - {{ city.fldAbbreviation }}</h5>
+{% for hw in hw_200 %}
+
+<div class="card" class="t-3 m-5 p-2">
+    <h5 class="card-title"><strong>Index </strong>{{ hw.Index }} - <strong>Height </strong>{{ hw.Height}}</h5>
 
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ city.fldLat }}</li>
-        <li class="list-group-item">{{ city.fldLong }}</li>
-        <li class="list-group-item">{{ city.fldCapitalStatus }}</li>
-        <li class="list-group-item">{{ city.fldCountry }}</li>
-        <li class="list-group-item">{{ city.fldPopulation }}</li>
+        <li class="list-group-item"><strong>Weight </strong>{{ hw.Weight }}</li>
     </ul>
     <div class="card-body">
-        <a href="/edit/{{city.id}}" class="card-link btn btn-primary">edit</a>
+        <a href="/edit/{{hw.id}}" class="card-link btn btn-primary">Edit</a>
     </div>
-</div>
-<form action="/delete/{{city.id}}" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
 
+</div>
+
+
+<form action="/delete/{{hw.id}}" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
+
+{% endfor %}
 
 {% endblock %}
-
